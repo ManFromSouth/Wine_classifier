@@ -24,6 +24,9 @@ class Models(object):
         self.white_output_set = None
         self.red_input_set = None
         self.red_output_set = None
+        self.load_models(None)
+        self.load_datasets()
+        self.fit_models()
 
     # назначет соответствующие модели в индекс
     # model_type может быть только: svm - метод опорных веторов
