@@ -1,8 +1,9 @@
 # зочем надо -- я и сам не знаю, но без этого собраный в ехе файл крашится
+from sklearn.utils import _cython_blas
 from sklearn.base import clone
 from sklearn.model_selection import train_test_split
 from sklearn.naive_bayes import GaussianNB
-from sklearn.neighbors import KNeighborsClassifier
+from sklearn.neighbors import typedefs, KNeighborsClassifier
 from sklearn.svm import SVC, NuSVC
 
 from Dataset_importer import import_whites, import_reds
