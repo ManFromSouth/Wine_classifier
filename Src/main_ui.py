@@ -11,8 +11,12 @@
 import numpy as np
 from PySide2 import QtCore, QtGui, QtWidgets
 
-from Src.Models import Models
+from Models import Models
 
+
+# заменяет все запятые в строке точками
+def convert_colons(string):
+    return string.replace(',', '.')
 
 class Ui_MainWindow(object):
     def __init__(self):
@@ -374,7 +378,7 @@ class Ui_MainWindow(object):
         elements = ['Al', 'Ba', 'Ca', 'Cu', 'Fe', 'K', 'Li', 'Mg', 'Mn', 'Na', 'Ni', 'Rb', 'Sr', 'Ti', 'Zn']
         element_values = list()
         for element in elements:
-            element_values.append(float(eval('self.lineEdit_{}.text()'.format(element))))
+            element_values.append(float(convert_colons(eval('self.lineEdit_{}.text()'.format(element)))))
         element_values = np.array(element_values)
         if self.radioButton_white.isChecked():
             wine_type = 'white'

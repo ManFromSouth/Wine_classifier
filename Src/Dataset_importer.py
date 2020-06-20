@@ -1,6 +1,11 @@
 import numpy as np
 
 
+# заменяет все запятые в строке точками
+def __convert_colons(string):
+    return string.replace(',', '.')
+
+
 def import_reds():
     dataset_red_inputs = list()
     dataset_red_outputs = list()
@@ -9,7 +14,7 @@ def import_reds():
             data_line = line.split('\t')
             # перевод текстовых выражених числовых переменных в собственно числа
             for number, item in enumerate(data_line[:15]):
-                data_line[number] = float(item)
+                data_line[number] = float(__convert_colons(item))
             # отрубание перехода на следующую строку в последнем элементе
             data_line[16] = data_line[16][:-1]
             # добавления вектора входов
@@ -30,7 +35,7 @@ def import_whites():
             data_line = line.split('\t')
             # перевод текстовых выражених числовых переменных в собственно числа
             for number, item in enumerate(data_line[:15]):
-                data_line[number] = float(item)
+                data_line[number] = float(__convert_colons(item))
             # отрубание перехода на следующую строку в последнем элементе
             data_line[16] = data_line[16][:-1]
             # добавления вектора входов

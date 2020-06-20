@@ -1,10 +1,11 @@
+# зочем надо -- я и сам не знаю, но без этого собраный в ехе файл крашится
 from sklearn.base import clone
 from sklearn.model_selection import train_test_split
 from sklearn.naive_bayes import GaussianNB
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.svm import SVC, NuSVC
 
-from Src.Dataset_importer import import_whites, import_reds
+from Dataset_importer import import_whites, import_reds
 
 
 class Models(object):
@@ -41,6 +42,7 @@ class Models(object):
             self.model_index['{}_{}_type'.format(wine_type, model_type)] = model_object
         elif dep_variable == 'оба':
             self.model_index['{}_{}_zone'.format(wine_type, model_type)] = model_object
+            # клон нужен, потому что не получится один и тот же объект обучить на две разные результирующие переменные
             self.model_index['{}_{}_type'.format(wine_type, model_type)] = clone(model_object)
         else:
             # TODO: сюда запихать обработчик ошибок
