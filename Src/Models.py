@@ -175,10 +175,8 @@ class Models(object):
                                                 kernel_gamma,
                                                 kernel_coefficient)
             else:
-                # TODO: добавить исключение
-                pass
+                raise AttributeError
         return result_models
-
     @staticmethod
     def __create_knn(data_dict):
         result_models = dict()
