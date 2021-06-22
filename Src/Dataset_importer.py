@@ -2,6 +2,7 @@ import numpy as np
 
 
 # заменяет все запятые в строке точками
+# это нужно поскольку, к примеру Excel и Statistica используют запятые, а Python - точки
 def __convert_colons(string):
     return string.replace(',', '.')
 

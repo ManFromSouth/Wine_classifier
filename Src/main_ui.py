@@ -375,14 +375,17 @@ class Ui_MainWindow(object):
     @QtCore.Slot()
     def calculate(self):
         self.label_results.setVisible(True)
+        # используемые микроэлементы
         elements = ['Al', 'Ba', 'Ca', 'Cu', 'Fe', 'K', 'Li', 'Mg', 'Mn', 'Na', 'Ni', 'Rb', 'Sr', 'Ti', 'Zn']
+        # значения микроэлементов для наблюдения
         element_values = list()
         for element in elements:
+            # получает значения эдитов, собирая их текстовые объекты и эваля их
             element_values.append(float(convert_colons(eval('self.lineEdit_{}.text()'.format(element)))))
-        element_values = np.array(element_values)
+        element_values = np.array(element_values)# преобразование списка в массив np
         if self.radioButton_white.isChecked():
             wine_type = 'white'
-        else:
+        else: # по сути, можно было бы обойтись и без флажка для красных
             wine_type = 'red'
         ret_dict = self.models.predict(wine_type, element_values)
         for method in ['svm', 'knn', 'nbc']:
